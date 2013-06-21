@@ -32,7 +32,8 @@ function! Powerline#Functions#GetFilepath() " {{{
 		" current directory.
 		let mod = (exists('+acd') && &acd) ? ':~:h' : ':~:.:h'
 		let fpath = split(fnamemodify(filepath, mod), dirsep)
-		let fpath_shortparts = map(fpath[1:], 'v:val[0]')
+		let fpath_shortparts =
+			\ map(fpath[1:], 'matchstr(v:val, ".", byteidx(v:val, 0))')
 		let ret = join(extend([fpath[0]], fpath_shortparts), dirsep) . dirsep
 	elseif g:Powerline_stl_path_style == 'relative'
 		" Display a relative path, similar to the %f statusline item
