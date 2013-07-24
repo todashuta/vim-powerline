@@ -144,9 +144,9 @@
 
 		if ! a:current
 			let mode = 'N' " Normal (non-current)
-		elseif mode =~# '\v(v|V|)'
+		elseif mode =~# "\\v(v|V|\<C-v>)"
 			let mode = 'v' " Visual mode
-		elseif mode =~# '\v(s|S|)'
+		elseif mode =~# "\\v(s|S|\<C-s>)"
 			let mode = 's' " Select mode
 		elseif mode =~# '\vi'
 			let mode = 'i' " Insert mode
